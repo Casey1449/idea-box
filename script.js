@@ -10,22 +10,43 @@ var saveButton = $('.idea-submit');
 function getIdeaInputs(){
   ideaTitle = $('.title-input').val();
   ideaBody = $('.body-input').val();
+  ideaId = Date.now();
 }
 
 saveButton.on('click', function(){
   getIdeaInputs();
+  var obj = new idea(ideaTitle, ideaBody, ideaId, ideaRanking);
   $('ul').append(ideaTemplate(ideaTitle, ideaBody, ideaRanking));
+  ideasArray.push(obj);
   //create new idea object from constructor
+
 })
 
-
-function NewIdea() {
-  var ideaObject = {id: ideaId, title: ideaTitle, body: ideaBody};
-  ideas.push(idea);
-  ideaTemplate(idea)
-  //append to ul
-  //store ideas[] locallystored
+function idea (title, body, id, ranking) {
+  this.title = title;
+  this.body = body;
+  this.id = id;
+  this.ranking = ranking;
 }
+
+
+function findShit(ideaTitle) {
+  ideasArray.filter(function(el) {
+    return el.title === ideaTitle;
+  });
+}
+
+
+
+
+// function NewIdeaObject() {
+//   var ideaObject = {id: ideaId, title: ideaTitle, body: ideaBody};
+//   ideasArray.push(ideaObject);
+//   $('ul').append(ideaTemplate(JSON.stringify(ideaObject)));
+//   // ideaTemplate(ideaObject)
+//   // return ideaObject;
+//   localStorage.setItem('ideas', JSON.stringify(ideasArray));
+// }
 
 
   function ideaTemplate(title, body, ranking) {
