@@ -1,13 +1,35 @@
 <html>
   <head>
-    <title>ideaBox</title>
+    <title>ideabox</title>
     <link rel="stylesheet" type="text/css" href="reset.css">
     <link rel="stylesheet" type="text/css" href="style.css">
     <meta name=viewport content="width=device-width, initial-scale=1">
   </head>
   <body>
+    <section class="idea-input">
+      <h1>idea<span>box</span></h1>
+      <input placeholder="title"></input>
+      <input placeholder="Body"></input>
+      <button>save</button>
+    </section>
 
-<!-- user input -->
+    <section class="idea-list">
+      <input placeholder="Search"></input>
+      <ul>
+        <li>
+          <header>
+            <h2>ideaTitle</h2>
+            <button>delete</button>
+          </header>
+          <p>ideaBody</p>
+          <footer>
+            <button>upvote</button>
+            <button>downvote</button>
+            <p>ranking:swill</p>
+          </footer>
+        </li>
+      </ul>
+    </section>
 
     <script src="jquery.js"></script>
     <script src="script.js"></script>
