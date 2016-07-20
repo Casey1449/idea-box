@@ -64,9 +64,30 @@ function idea (title, body, id, ranking) {
            "</li>";
   }
 
-function findObjectById(targetId){
-  for (i=0; i<ideasArray.length, i++){
-    if (ideasArray[i].id === targetId){
-      return ideasArray[i]};
-  };
-};
+  function findObjectById(targetId){
+     for (i=0; i<ideasArray.length; i++) {
+       if (ideasArray[i].id === targetId){
+         return ideasArray[i]};
+     };
+   };
+
+   function updateTitleById(targetId, newValue){
+      for (i=0; i<ideasArray.length; i++) {
+        if (ideasArray[i].id === targetId){
+          ideasArray[i].title = newValue};
+      };
+    };
+
+    function updateBodyById(targetId, newValue){
+       for (i=0; i<ideasArray.length; i++) {
+         if (ideasArray[i].id === targetId){
+           ideasArray[i].body = newValue};
+       };
+     };
+
+     function updateRankingById(targetId, newValue){
+        for (i=0; i<ideasArray.length; i++) {
+          if (ideasArray[i].id === targetId){
+            ideasArray[i].ranking = newValue};
+        };
+      };
