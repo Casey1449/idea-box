@@ -19,7 +19,7 @@ saveButton.on('click', function(){
   $('ul').append(ideaTemplate(ideaTitle, ideaBody, ideaRanking));
   ideasArray.push(obj);
   //create new idea object from constructor
-
+  localStorage.setItem('ideas', JSON.stringify(ideasArray));
 })
 
 function idea (title, body, id, ranking) {
@@ -30,11 +30,11 @@ function idea (title, body, id, ranking) {
 }
 
 
-function findShit(ideaTitle) {
-  ideasArray.filter(function(el) {
-    return el.title === ideaTitle;
-  });
-}
+// function findShit(ideaTitle) {
+//   ideasArray.find(function(el) {
+//     return el.title === ideaTitle;
+//   });
+// }
 
 
 
@@ -63,3 +63,10 @@ function findShit(ideaTitle) {
             "</footer>" +
            "</li>";
   }
+
+function findObjectById(targetId){
+  for (i=0; i<ideasArray.length, i++){
+    if (ideasArray[i].id === targetId){
+      return ideasArray[i]};
+  };
+};
