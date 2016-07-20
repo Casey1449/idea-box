@@ -1,17 +1,24 @@
-// when document is ready, load event listeners and locallystored ideas
-var ideasArray = []
+var ideasArray = [];
 var ideaTitle = $('.title-input').val();
 var ideaBody = $('.body-input').val();
 var ideaId = Date.now();
 var ideaRanking = 'swill'
 var saveButton = $('.idea-submit');
 
-
 function getIdeaInputs(){
   ideaTitle = $('.title-input').val();
   ideaBody = $('.body-input').val();
   ideaId = Date.now();
 }
+
+function updateArray(){
+  if (JSON.parse(localStorage.getItem('ideas'))){
+    ideasArray = JSON.parse(localStorage.getItem('ideas'));
+  return ideasArray
+  };
+};
+
+updateArray();
 
 saveButton.on('click', function(){
   getIdeaInputs();
@@ -65,7 +72,7 @@ function idea (title, body, id, ranking) {
   }
 
 function findObjectById(targetId){
-  for (i=0; i<ideasArray.length, i++){
+  for (i=0; i<ideasArray.length; i++){
     if (ideasArray[i].id === targetId){
       return ideasArray[i]};
   };
