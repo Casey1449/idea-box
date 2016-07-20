@@ -1,0 +1,12 @@
+li {
+  outline: 5px solid black;
+  margin: 10px;
+}
+
+.idea-input {
+  outline: 5px solid black;
+  margin: 10px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
