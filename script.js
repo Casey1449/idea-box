@@ -18,11 +18,17 @@ function loadArray(){
   }
 }
 
+function clearInputs() {
+  $('.title-input').val("");
+  $('.body-input').val("");
+  getIdeaInputs();
+}
+
 loadArray();
 
 function repopulateDOM(){
   for (i=0; i<ideasArray.length; i++){
-    $('ul').append(ideaTemplate(ideasArray[i].title, ideasArray[i].body, ideasArray[i].ranking, ideasArray[i].id));
+    $('ul').prepend(ideaTemplate(ideasArray[i].title, ideasArray[i].body, ideasArray[i].ranking, ideasArray[i].id));
   }
 
 }
@@ -43,7 +49,7 @@ function Idea(title, body, id, ranking) {
                "<h2 contenteditable = 'true'>" + title + "</h2>" +
                "<button class='remove'>delete</button>" +
             "</header>" +
-            "<p contenteditable='true'>" + body + "</p>" +
+            "<p contenteditable='true' class='body'>" + body + "</p>" +
             "<footer>" +
                "<button class='upvote'>upvote</button>" +
                "<button class='downvote'>downvote</button>" +
@@ -93,9 +99,10 @@ function Idea(title, body, id, ranking) {
       saveButton.on('click', function(){
         getIdeaInputs();
         var littleIdea = new Idea(ideaTitle, ideaBody, ideaId, ideaRanking);
-        $('ul').append(ideaTemplate(ideaTitle, ideaBody, ideaRanking, ideaId));
+        $('ul').prepend(ideaTemplate(ideaTitle, ideaBody, ideaRanking, ideaId));
         ideasArray.push(littleIdea);
         updateArray();
+        clearInputs();
       });
 
 // delete
@@ -113,13 +120,13 @@ function Idea(title, body, id, ranking) {
 $('ul').on('click', '.upvote', function(){
   var data = parseInt(this.closest('li').id);
   var position = findObjectById(data);
-  if (ideasArray[position].ranking == "medium") {
+  if (ideasArray[position].ranking == "plausible") {
     updateRankingById(data, 'genius');
     $(this).siblings('.ranking').text('ranking: genius');
   }
   if (ideasArray[position].ranking == "swill") {
-    updateRankingById(data, 'medium');
-    $(this).siblings('.ranking').text('ranking: medium');
+    updateRankingById(data, 'plausible');
+    $(this).siblings('.ranking').text('ranking: plausible');
   }
   updateArray();
 });
@@ -129,25 +136,37 @@ $('ul').on('click', '.upvote', function(){
 $('ul').on('click', '.downvote', function(){
   var data = parseInt(this.closest('li').id);
   var position = findObjectById(data);
-  if (ideasArray[position].ranking == "medium") {
+  if (ideasArray[position].ranking == "plausible") {
     updateRankingById(data, 'swill');
     $(this).siblings('.ranking').text('ranking: swill');
   }
   if (ideasArray[position].ranking == "genius") {
-    updateRankingById(data, 'medium');
-    $(this).siblings('.ranking').text('ranking: medium');
+    updateRankingById(data, 'plausible');
+    $(this).siblings('.ranking').text('ranking: plausible');
   }
   updateArray();
 });
 
+$('ul').on('keyup', 'h2', function(){
+  var data = parseInt(this.closest('li').id);
+  var position = findObjectById(data);
+  ideasArray[position].title = $(this).text();
+  updateArray();
+});
+
+$('ul').on('keyup', '.body', function(){
+  var data = parseInt(this.closest('li').id);
+  var position = findObjectById(data);
+  ideasArray[position].body = $(this).text();
+  updateArray();
+});
+
+
+
+
 //better idea?
 // qualityArray = ['swill', 'medium', 'genius']
 
-// function checkBothInputs() {
-//   if (ideaTitle.length === 0) {return $('idea-submit').attr("disabled", true)}
-//   if (ideaBody.length === 0) {return $('idea-submit').attr("disabled", true)}
-//   return $('idea-submit').attr("disabled", false)
-// }
 
 function buttonStatus(){
   if (ideaTitle && ideaBody)
