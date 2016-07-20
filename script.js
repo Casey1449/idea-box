@@ -20,49 +20,30 @@ function updateArray(){
 
 updateArray();
 
-saveButton.on('click', function(){
-  getIdeaInputs();
-  var obj = new idea(ideaTitle, ideaBody, ideaId, ideaRanking);
-  $('ul').append(ideaTemplate(ideaTitle, ideaBody, ideaRanking));
-  ideasArray.push(obj);
-  //create new idea object from constructor
-  localStorage.setItem('ideas', JSON.stringify(ideasArray));
-})
+function repopulateDOM(){
+  for (i=0; i<ideasArray.length; i++){
+    $('ul').append(ideaTemplate(ideasArray[i].title, ideasArray[i].body, ideasArray[i].ranking, ideasArray[i].id));
+  }
 
-function idea (title, body, id, ranking) {
+}
+
+repopulateDOM();
+
+function Idea(title, body, id, ranking) {
   this.title = title;
   this.body = body;
   this.id = id;
   this.ranking = ranking;
 }
 
+  function ideaTemplate(title, body, ranking, id) {
 
-// function findShit(ideaTitle) {
-//   ideasArray.find(function(el) {
-//     return el.title === ideaTitle;
-//   });
-// }
-
-
-
-
-// function NewIdeaObject() {
-//   var ideaObject = {id: ideaId, title: ideaTitle, body: ideaBody};
-//   ideasArray.push(ideaObject);
-//   $('ul').append(ideaTemplate(JSON.stringify(ideaObject)));
-//   // ideaTemplate(ideaObject)
-//   // return ideaObject;
-//   localStorage.setItem('ideas', JSON.stringify(ideasArray));
-// }
-
-
-  function ideaTemplate(title, body, ranking) {
-    return "<li>" +
+    return "<li data = " + id +">" +
             "<header>" +
-               "<h2>" + title + "</h2>" +
+               "<h2 contenteditable = 'true'>" + title + "</h2>" +
                "<button>delete</button>" +
             "</header>" +
-            "<p>" + body + "</p>" +
+            "<p contenteditable='true'>" + body + "</p>" +
             "<footer>" +
                "<button>upvote</button>" +
                "<button>downvote</button>" +
@@ -98,3 +79,11 @@ function idea (title, body, id, ranking) {
             ideasArray[i].ranking = newValue};
         };
       };
+
+      saveButton.on('click', function(){
+        getIdeaInputs();
+        var littleIdea = new Idea(ideaTitle, ideaBody, ideaId, ideaRanking);
+        $('ul').append(ideaTemplate(ideaTitle, ideaBody, ideaRanking, ideaId));
+        ideasArray.push(littleIdea);
+        localStorage.setItem('ideas', JSON.stringify(ideasArray));
+      })
