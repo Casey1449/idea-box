@@ -142,3 +142,22 @@ $('ul').on('click', '.downvote', function(){
 
 //better idea?
 // qualityArray = ['swill', 'medium', 'genius']
+
+// function checkBothInputs() {
+//   if (ideaTitle.length === 0) {return $('idea-submit').attr("disabled", true)}
+//   if (ideaBody.length === 0) {return $('idea-submit').attr("disabled", true)}
+//   return $('idea-submit').attr("disabled", false)
+// }
+
+function buttonStatus(){
+  if (ideaTitle && ideaBody)
+    {return saveButton.attr("disabled", false);
+  }else{
+    return saveButton.attr("disabled", true);
+  }
+}
+
+$('.idea-input').on('keyup', 'input', function(){
+  getIdeaInputs();
+  buttonStatus();
+});
