@@ -30,7 +30,6 @@ function repopulateDOM(){
   for (i=0; i<ideasArray.length; i++){
     $('ul').prepend(ideaTemplate(ideasArray[i].title, ideasArray[i].body, ideasArray[i].ranking, ideasArray[i].id));
   }
-
 }
 
 repopulateDOM();
@@ -47,12 +46,12 @@ function Idea(title, body, id, ranking) {
     return "<li id= " + id + ">" +
             "<header>" +
                "<h2 contenteditable = 'true'>" + title + "</h2>" +
-               "<button class='remove'>delete</button>" +
+               "<button class='remove'></button>" +
             "</header>" +
             "<p contenteditable='true' class='body'>" + body + "</p>" +
             "<footer>" +
-               "<button class='upvote'>upvote</button>" +
-               "<button class='downvote'>downvote</button>" +
+               "<button class='upvote'></button>" +
+               "<button class='downvote'></button>" +
                "<p class='ranking'>ranking: " + ranking + "</p>";
             "</footer>" +
            "</li>";
@@ -98,9 +97,9 @@ function Idea(title, body, id, ranking) {
 
       saveButton.on('click', function(){
         getIdeaInputs();
-        var littleIdea = new Idea(ideaTitle, ideaBody, ideaId, ideaRanking);
+        var newIdeaObject = new Idea(ideaTitle, ideaBody, ideaId, ideaRanking);
         $('ul').prepend(ideaTemplate(ideaTitle, ideaBody, ideaRanking, ideaId));
-        ideasArray.push(littleIdea);
+        ideasArray.push(newIdeaObject);
         updateArray();
         clearInputs();
         buttonStatus();
