@@ -1,30 +1,134 @@
-li {
-  outline: 2px solid black;
-  padding:5px;
-  margin: 5px;
+body {
+  box-sizing: border-box;
+  font-family: 'Open Sans', sans-serif;
 }
 
 .idea-input {
-  outline: 2px solid black;
   display: flex;
+  padding: 20px;
   flex-direction: column;
   align-items: center;
+  background: #e5f3f2;
+}
+
+h1, h2 {
+  font-family: 'Roboto Slab', serif;
+}
+
+h1 {
+  font-size: 3.5em;
+  font-weight: 700;
+  color: #00a79d;
+  margin: 30px;
+}
+
+span {
+  color: #6d6e71;
+}
+
+input {
+  width: 500px;
+  height: 30px;
+  margin-bottom: 15px;
+  padding: 5px;
+  font-size: 1em;
+  border: 2px solid #d1d3d4;
+}
+
+.idea-input button {
+  width: 500px;
+  height: 35px;
+  font-size: 1em;
+  color: #ffffff;
+  background: #00a79d;
+  border: none;
+  margin-bottom: 5px;
+}
+
+.idea-input button:hover{
+  background: #045e55;
 }
 
 .idea-list {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  width: 100%;
-  outline: 2px solid black;
+  display: block;
+  width: 500px;
+  margin: auto;
+  padding-top: 25px;
 }
 
-header {
-  display: flex;
-  flex-direction: row;
+li {
+  padding: 0px;
 }
 
-footer {
-  display: flex;
-  flex-direction: row;
+li header{
+  margin-top: 25px;
 }
+
+.remove {
+  background: url(./images/delete.svg) no-repeat;
+  width: 30px;
+  height: 30px;
+  display: inline;
+  float: right;
+  border: none;
+}
+
+.remove:hover{
+  background: url(./images/delete-hover.svg) no-repeat;
+  width: 30px;
+  height: 30px;
+}
+
+li h2{
+  display: inline;
+  font-size: 1.5em;
+  font-weight: 700;
+  color: #6d6e71;
+}
+
+li p {
+  margin: 25px;
+  color: #939598;
+}
+
+li footer {
+  border-bottom: 2px solid #d1d3d4;
+}
+ li footer button{
+   display: inline-block;
+   float: left;
+ }
+
+ .upvote {
+   background: url(./images/upvote.svg) no-repeat;
+   width: 30px;
+   height: 30px;
+   border: none;
+   margin-right: 20px;
+ }
+
+ .upvote:hover{
+   background: url(./images/upvote-hover.svg) no-repeat;
+   width: 30px;
+   height: 30px;
+ }
+
+ .downvote {
+   background: url(./images/downvote.svg) no-repeat;
+   width: 30px;
+   height: 30px;
+   border: none;
+   margin-right: 20px;
+ }
+
+ .downvote:hover{
+   background: url(./images/downvote-hover.svg) no-repeat;
+   width: 30px;
+   height: 30px;
+ }
+
+li footer p {
+  left: 0;
+  color: #6d6e71;
+  font-family: 'Roboto Slab', serif;
+  font-size: .75em;
