@@ -58,17 +58,16 @@ input {
 }
 
 .idea-list {
-  display: block;
-  width: 100%;
-  max-width: 500px;
-  margin: auto;
-  padding-top: 25px;
+  display: flex;
+  padding: 20px;
+  flex-direction: column;
+  align-items: center;
 }
 
 li {
-  padding: 0px;
-  display: flex;
-  flex-direction: column;
+  justify-content: center;
+  width: 100%;
+  max-width: 500px;
 }
 
 li header{
@@ -112,6 +111,7 @@ footer {
   align-items: center;
   padding-bottom: 20px;
 }
+
 footer button{
    display: inline-block;
    float: left;
@@ -156,4 +156,34 @@ footer p {
 
 .quality-css {
   font-family: 'Open Sans', sans-serif;
+}
+
+@media (max-width: 600px) {
+  h1 {
+    font-size: 2em;
+    margin-top: 0px;
+    margin-bottom: 20px;
+  }
+
+  .idea-input {
+    padding: 20px;
+  }
+
+  .title-input-css {
+    font-size: 1.3em;
+  }
+
+  .body-input-css {
+    font-size: 1.3em;
+    height: 80px;
+    padding: 10px 5px 60px 5px;
+  }
+
+  .search {
+    font-size: 1.3em;
+  }
+
+  .idea-input button {
+    font-size: 1.3em;
+  }
 }
