@@ -180,3 +180,15 @@ $('.idea-input').on('keyup', 'input', function(){
   getIdeaInputs();
   buttonStatus();
 });
+
+// search
+
+$('.js-search').on('keyup', function(){
+  var searchTerm = $(this).val();
+  if(searchTerm) {
+    $('ul').find('li:not(:contains('+ searchTerm + '))').slideUp();
+    $('ul').find('li:contains(' + searchTerm + ')').slideDown();
+  } else {
+    $('ul').find('li').slideDown();
+  }
+});
