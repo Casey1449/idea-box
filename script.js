@@ -52,7 +52,7 @@ function Idea(title, body, id, ranking) {
             "<footer>" +
                "<button class='upvote'></button>" +
                "<button class='downvote'></button>" +
-               "<p class='ranking'>ranking: " + ranking + "</p>";
+               "<p class='ranking'>quality: <span class='quality-css'>" + ranking + "</span></p>";
             "</footer>" +
            "</li>";
   }
@@ -121,11 +121,11 @@ $('ul').on('click', '.upvote', function(){
   var id = parseInt(this.closest('li').id);
   if (findObjectById(id).ranking == "plausible") {
     updateRankingById(id, 'genius');
-    $(this).siblings('.ranking').text('ranking: genius');
+    $(this).siblings('.ranking').text('quality: genius');
   }
   if (findObjectById(id).ranking == "swill") {
     updateRankingById(id, 'plausible');
-    $(this).siblings('.ranking').text('ranking: plausible');
+    $(this).siblings('.ranking').text('quality: plausible');
   }
   updateArray();
 });
@@ -136,11 +136,11 @@ $('ul').on('click', '.downvote', function(){
   var id = parseInt(this.closest('li').id);
   if (findObjectById(id).ranking == "plausible") {
     updateRankingById(id, 'swill');
-    $(this).siblings('.ranking').text('ranking: swill');
+    $(this).siblings('.ranking').text('quality: swill');
   }
   if (findObjectById(id).ranking == "genius") {
     updateRankingById(id, 'plausible');
-    $(this).siblings('.ranking').text('ranking: plausible');
+    $(this).siblings('.ranking').text('quality: plausible');
   }
   updateArray();
 });
