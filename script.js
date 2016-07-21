@@ -61,7 +61,7 @@ function Idea(title, body, id, ranking) {
   function findObjectById(targetId){
      for (i=0; i<ideasArray.length; i++) {
        if (ideasArray[i].id === targetId){
-         return i;
+         return ideasArray[i];
      }
    }
  }
@@ -103,6 +103,7 @@ function Idea(title, body, id, ranking) {
         ideasArray.push(littleIdea);
         updateArray();
         clearInputs();
+        buttonStatus();
       });
 
 // delete
@@ -118,14 +119,13 @@ function Idea(title, body, id, ranking) {
 // upvote
 
 $('ul').on('click', '.upvote', function(){
-  var data = parseInt(this.closest('li').id);
-  var position = findObjectById(data);
-  if (ideasArray[position].ranking == "plausible") {
-    updateRankingById(data, 'genius');
+  var id = parseInt(this.closest('li').id);
+  if (findObjectById(id).ranking == "plausible") {
+    updateRankingById(id, 'genius');
     $(this).siblings('.ranking').text('ranking: genius');
   }
-  if (ideasArray[position].ranking == "swill") {
-    updateRankingById(data, 'plausible');
+  if (findObjectById(id).ranking == "swill") {
+    updateRankingById(id, 'plausible');
     $(this).siblings('.ranking').text('ranking: plausible');
   }
   updateArray();
@@ -134,39 +134,40 @@ $('ul').on('click', '.upvote', function(){
 //downvote
 
 $('ul').on('click', '.downvote', function(){
-  var data = parseInt(this.closest('li').id);
-  var position = findObjectById(data);
-  if (ideasArray[position].ranking == "plausible") {
-    updateRankingById(data, 'swill');
+  var id = parseInt(this.closest('li').id);
+  if (findObjectById(id).ranking == "plausible") {
+    updateRankingById(id, 'swill');
     $(this).siblings('.ranking').text('ranking: swill');
   }
-  if (ideasArray[position].ranking == "genius") {
-    updateRankingById(data, 'plausible');
+  if (findObjectById(id).ranking == "genius") {
+    updateRankingById(id, 'plausible');
     $(this).siblings('.ranking').text('ranking: plausible');
   }
   updateArray();
 });
 
+//edit title field
+
 $('ul').on('keyup', 'h2', function(){
   var data = parseInt(this.closest('li').id);
-  var position = findObjectById(data);
-  ideasArray[position].title = $(this).text();
+  updateTitleById(data, $(this).text());
   updateArray();
 });
+
+//edit body field
 
 $('ul').on('keyup', '.body', function(){
   var data = parseInt(this.closest('li').id);
-  var position = findObjectById(data);
-  ideasArray[position].body = $(this).text();
+  updateBodyById(data, $(this).text());
   updateArray();
 });
 
-
-
+// function getIdFromDOM(){
+//   parseInt(this.closest('li').id);
+// }
 
 //better idea?
 // qualityArray = ['swill', 'medium', 'genius']
-
 
 function buttonStatus(){
   if (ideaTitle && ideaBody)
