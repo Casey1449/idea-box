@@ -27,7 +27,8 @@ span {
 }
 
 input {
-  width: 500px;
+  width: 100%;
+  max-width: 500px;
   height: 30px;
   margin-bottom: 15px;
   padding: 5px;
@@ -36,7 +37,8 @@ input {
 }
 
 .idea-input button {
-  width: 500px;
+  width: 100%;
+  max-width: 500px;
   height: 35px;
   font-size: 1em;
   color: #ffffff;
@@ -49,19 +51,30 @@ input {
   background: #045e55;
 }
 
+.idea-input button:disabled{
+  background: #6D6E71;
+  color: #D1D3D4;
+  opacity: .7;
+}
+
 .idea-list {
   display: block;
-  width: 500px;
+  width: 100%;
+  max-width: 500px;
   margin: auto;
   padding-top: 25px;
 }
 
 li {
   padding: 0px;
+  display: flex;
+  flex-direction: column;
 }
 
 li header{
   margin-top: 25px;
+  display: flex;
+  flex-direction: row;
 }
 
 .remove {
@@ -71,6 +84,7 @@ li header{
   display: inline;
   float: right;
   border: none;
+  justify-content: right;
 }
 
 .remove:hover{
@@ -87,14 +101,18 @@ li h2{
 }
 
 li p {
-  margin: 25px;
+  margin: 15px 0px;
   color: #939598;
 }
 
-li footer {
+footer {
   border-bottom: 2px solid #d1d3d4;
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding-bottom: 20px;
 }
- li footer button{
+footer button{
    display: inline-block;
    float: left;
  }
@@ -127,9 +145,11 @@ li footer {
    height: 30px;
  }
 
-li footer p {
+
+footer p {
   left: 0;
   color: #6d6e71;
   font-family: 'Roboto Slab', serif;
   font-size: .75em;
+  align-items: center;
 }
