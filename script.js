@@ -108,9 +108,9 @@ function Idea(title, body, id, ranking) {
 // delete
 
       $('ul').on('click', '.remove', function(){
-        var data = parseInt(this.closest('li').id);
+        var id = parseInt(this.closest('li').id);
         this.closest('li').remove();
-        var position = findObjectById(data);
+        var position = ideasArray.indexOf(findObjectById(id));
         ideasArray.splice(position, 1);
         updateArray();
       });
