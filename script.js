@@ -185,10 +185,34 @@ $('.idea-input').on('keyup', 'input', function(){
 
 $('.js-search').on('keyup', function(){
   var searchTerm = $(this).val();
-  if(searchTerm) {
+  search(searchTerm);
+});
+
+function search(searchTerm) {
+  if(searchTerm !== "") {
     $('ul').find('li:not(:contains('+ searchTerm + '))').slideUp();
     $('ul').find('li:contains(' + searchTerm + ')').slideDown();
   } else {
     $('ul').find('li').slideDown();
   }
+}
+
+
+
+//right now this is looking in list for the search term
+//it should be looking in footer.
+//when i looked in footer it slid up and down footer which didn't have the affect
+
+$('select').on('change', function() {
+  var filterCriteria = $('select option:selected').text();
+  filter(filterCriteria);
 });
+
+function filter(filterCriteria) {
+  if(filterCriteria !== 'No Filter' ) {
+    $('ul').find('footer:not(:contains(' + filterCriteria + '))').parent().slideUp();
+    $('ul').find('footer:contains(' + filterCriteria + ')').parent().slideDown();
+  } else {
+    $('ul').find('li').slideDown();
+  }
+}
