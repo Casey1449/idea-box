@@ -64,6 +64,31 @@ input {
   align-items: center;
 }
 
+.filter-fields {
+  width: 100%;
+  max-width: 500px;
+  display: flex;
+  display: flex;
+  padding: 20px;
+  flex-direction: row;
+  justify-content: center;
+}
+
+select {
+  max-width: 500px;
+  height: 30px;
+  margin-bottom: 15px;
+  font-size: 1em;
+  border: 2px solid #d1d3d4;
+  color: #939598;
+}
+
+ul {
+  justify-content: center;
+  width: 100%;
+  max-width: 500px;
+}
+
 li {
   justify-content: center;
   width: 100%;
@@ -180,6 +205,10 @@ footer p {
   }
 
   .search {
+    font-size: 1.3em;
+  }
+
+  .quality-filter {
     font-size: 1.3em;
   }
 
