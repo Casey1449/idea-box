@@ -207,10 +207,10 @@ $('select').on('change', function() {
 });
 
 function filter(filterCriteria) {
-  if(filterCriteria !== 'No Filter' ) {
-    $('ul').find('footer:not(:contains(' + filterCriteria + '))').parent().slideUp();
-    $('ul').find('footer:contains(' + filterCriteria + ')').parent().slideDown();
+  if(filterCriteria !== 'Select Filter' ) {
+    $('ul').find('footer:not(:contains(' + filterCriteria + '))').parent().hide()
+    $('ul').find('footer:contains(' + filterCriteria + ')').parent().show();
   } else {
-    $('ul').find('li').slideDown();
+      $('ul').find('li').show();
   }
 }
