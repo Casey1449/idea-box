@@ -52,7 +52,7 @@ function Idea(title, body, id, ranking) {
             "<footer>" +
                "<button class='upvote'></button>" +
                "<button class='downvote'></button>" +
-               "<p class='ranking'>quality: <span class='quality-css'>" + ranking + "</span></p>";
+               "<p class='ranking'>quality: <span class='quality-css'>" + ranking + "</span></p>" +
             "</footer>" +
            "</li>";
   }
@@ -147,23 +147,27 @@ $('ul').on('click', '.downvote', function(){
 
 //edit title field
 
-$('ul').on('keyup', 'h2', function(){
+$('ul').on('keydown', 'h2', function(e){
   var data = parseInt(this.closest('li').id);
   updateTitleById(data, $(this).text());
   updateArray();
+  if (e.keyCode === 13){
+    $('h2').blur();
+    e.preventDefault();
+  }
 });
 
 //edit body field
 
-$('ul').on('keyup', '.body', function(){
+$('ul').on('keydown', '.body', function(e){
   var data = parseInt(this.closest('li').id);
   updateBodyById(data, $(this).text());
   updateArray();
+  if (e.keyCode === 13){
+    $('.body').blur();
+    e.preventDefault();
+  }
 });
-
-// function getIdFromDOM(){
-//   parseInt(this.closest('li').id);
-// }
 
 //better idea?
 // qualityArray = ['swill', 'medium', 'genius']
@@ -196,12 +200,6 @@ function search(searchTerm) {
     $('ul').find('li').slideDown();
   }
 }
-
-
-
-//right now this is looking in list for the search term
-//it should be looking in footer.
-//when i looked in footer it slid up and down footer which didn't have the affect
 
 $('select').on('change', function() {
   var filterCriteria = $('select option:selected').text();
